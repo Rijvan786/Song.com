@@ -10,5 +10,8 @@ const redis=new Redis({
 redis.on("connect",()=>{
     console.log("Redis is connected to server");
 })
+redis.on("error",()=>{
+    console.log("Redis erro");
+})
 
 module.exports=redis
