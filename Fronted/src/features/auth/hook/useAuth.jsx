@@ -36,9 +36,9 @@ const handlellogout=async()=>{
     setLoading(false)
 
 }
-useEffect(()=>{
-    handlegetme()
-},[])
+// useEffect(()=>{
+//     handlegetme()
+// },[])
 return {
     handleregister,handlelogin,handlegetme,handlellogout,user,Loading
     

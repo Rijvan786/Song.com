@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const api=axios.create({
-    baseURL:"https://moodify-web.onrender.com/api/web",
+    baseURL:"http://localhost:3000/api/web",
     withCredentials:true
 })
 
