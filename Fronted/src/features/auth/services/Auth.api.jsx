@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const api=axios.create({
-    baseURL:"https://song-com.onrender.com/",
+    baseURL:"https://song-com.onrender.com",
     withCredentials:true
 })
 
