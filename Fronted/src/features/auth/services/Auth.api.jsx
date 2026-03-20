@@ -1,12 +1,12 @@
 import axios from "axios"
 
 const api=axios.create({
-    baseURL:"https://moodify-web.onrender.com/api/web",
+    baseURL:"https://moodify-web.onrender.com",
     withCredentials:true
 })
 
 export const  register=async({username,email,password})=>{
-     const response=await api.post("/register",{
+     const response=await api.post("/api/web/register",{
         username,
         email,
         password
@@ -16,7 +16,7 @@ export const  register=async({username,email,password})=>{
 }
 export const login=async({username,email,password})=>{
       
-    const response=await api.post("/login",{
+    const response=await api.post("/api/web/login",{
         username,
         email,
         password
@@ -27,13 +27,13 @@ export const login=async({username,email,password})=>{
 }
 
 export const getme=async()=>{
-    const response =await api.get("/getme")
+    const response =await api.get("/api/web/getme")
      console.log(response);
 
     return response.data
 }
 export const logout=async ()=>{
-    const response=await api.get("/logout")
+    const response=await api.get("/api/web/logout")
      console.log(response);
 
     return response.data
