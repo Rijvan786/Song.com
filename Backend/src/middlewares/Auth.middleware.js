@@ -11,7 +11,9 @@ const Identifire=async(req,res,next)=>{
             message:"token is not provided"
         })
     }
-    const blacklist=await redis.get(token)
+    const blacklist=await BlackLlistmodel.create({
+    token
+    })
    if(blacklist){
     return res.status(401).json({
         message:"Token is blacklisted"
