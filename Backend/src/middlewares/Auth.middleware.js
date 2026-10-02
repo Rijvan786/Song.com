@@ -11,8 +11,8 @@ const Identifire=async(req,res,next)=>{
             message:"token is not provided"
         })
     }
-    const blacklist=await Blacklistmodel.create({
-    token
+    const blacklist=await Blacklistmodel.findOne({
+   token: token
     })
    if(blacklist){
     return res.status(401).json({
