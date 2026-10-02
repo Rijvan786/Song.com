@@ -95,7 +95,7 @@ const logout=async(req,res)=>{
     const token=req.cookies.token
     console.log(token);
     res.clearCookie("token")
-    await BlacklistModel.create({token,Date:Date.now(),"EX",60*60})
+    await BlacklistModel.create({token:token})
 
 
     res.status(200).json({
