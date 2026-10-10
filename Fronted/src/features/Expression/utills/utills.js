@@ -30,12 +30,14 @@ import { FaceLandmarker, FilesetResolver } from "@mediapipe/tasks-vision";
     };
   };
 
- export const detect = ({landmarkerRef,videoRef,setExpression}) => {
+ try{
+  export const detect = ({landmarkerRef,videoRef,setExpression}) => {
 
     const results = landmarkerRef.current.detectForVideo(
       videoRef.current,
       Date.now()
     );
+   
 
     if (results.faceBlendshapes.length > 0) {
 
@@ -63,3 +65,9 @@ import { FaceLandmarker, FilesetResolver } from "@mediapipe/tasks-vision";
 
  
   };
+ }
+ catch(error){
+  console.error("Error in detect function:", error);
+  setExpression("Error detecting expression");
+  return "Error";
+ }

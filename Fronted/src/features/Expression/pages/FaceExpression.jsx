@@ -7,6 +7,9 @@ export default function FaceExpression({onClick=()=>{}}) {
 
   const videoRef = useRef(null);
   const landmarkerRef = useRef(null);
+  if(!landmarkerRef){
+    return null
+  }
   const streamRef=useRef()
   const [expression, setExpression] = useState("detecting....");
   const {Loading}=useSong()
