@@ -31,7 +31,7 @@ AuthRouter.get("/google",passport.authenticate("google",{scope:["profile","email
 
 
 AuthRouter.get("/google/callback",
-  passport.authenticate("google",{session:false,failureRedirect:config.NODE_ENV==="development"?"http://localhost5173/protected":"/"})
+  passport.authenticate("google",{session:false,failureRedirect:config.NODE_ENV==="production"?"https://songcom-production.up.railway.app":"http://localhost:5173"})
 ,GoogleCallback)
 
 

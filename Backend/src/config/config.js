@@ -3,7 +3,7 @@ dotenv.config();
 
 
 
-const {MONGODB_URI, PORT,NODE_ENV, JWT_SECRET, EMAIL_USER, EMAIL_PASS,IMAGE_KIT_PRIVATE_KEY,GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET,GOOGLE_REFRESH_TOKEN,GOOGLE_CLIENT_ID2,GOOGLE_CLIENT_SECRET2} = process.env;
+const {MONGODB_URI, PORT,NODE_ENV,CLIENT_URL, JWT_SECRET, EMAIL_USER, EMAIL_PASS,IMAGE_KIT_PRIVATE_KEY,GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET,GOOGLE_REFRESH_TOKEN,GOOGLE_CLIENT_ID2,GOOGLE_CLIENT_SECRET2} = process.env;
 
 if(!MONGODB_URI) {
     throw new Error("MONGODB_URI is not defined in the environment variables");
@@ -16,7 +16,9 @@ if(!PORT) {
 if(!NODE_ENV) {
     throw new Error("NODE_ENV is not defined in the environment variables");
 }
-
+if(!CLIENT_URL){
+    throw new Error ("CLIENT_URL is not defined in the environment variables")
+}
 if(!JWT_SECRET) {
     throw new Error("JWT_SECRET is not defined in the environment variables");
 }
@@ -59,6 +61,7 @@ export const  config ={
     MONGODB_URI:MONGODB_URI,
     PORT:PORT,
     NODE_ENV:NODE_ENV,
+    CLIENT_URL:CLIENT_URL,
     JWT_SECRET:JWT_SECRET,
     EMAIL_USER:EMAIL_USER,
     EMAIL_PASS:EMAIL_PASS,

@@ -19,8 +19,8 @@ function escapeHtml(str) {
 // Base URLs resolution for scaling and multi-environment deployment
 const getClientUrl = () => {
   return (
-    process.env.CLIENT_URL ||
-    (config.NODE_ENV === "production" ? "https://moodify.com" : "http://localhost:5173")
+    config.CLIENT_URL ||
+    (config.NODE_ENV === "production" ? "https://songcom-production.up.railway.app" : "http://localhost:5173")
   );
 };
 
@@ -28,7 +28,7 @@ const getBaseUrl = () => {
   return (
     process.env.BASE_URL ||
     (config.NODE_ENV === "production"
-      ? "https://api.moodify.com"
+      ? "https://songcom-production.up.railway.app"
       : `http://localhost:${config.PORT || 3000}`)
   );
 };
@@ -698,7 +698,7 @@ export const GoogleCallback = async (req, res) => {
     const emailHtml = getGoogleWelcomeEmailHtml({
       username: user.username,
       email: user.email,
-      dashboardUrl:`http://localhost:5173/protected`,
+      dashboardUrl:`https://songcom-production.up.railway.app/protected`,
     });
 
     try {
@@ -729,7 +729,7 @@ export const GoogleCallback = async (req, res) => {
       sameSite: "lax",
     });
        
-    return   res.redirect(`http://localhost:5173/Protected`);
+    return   res.redirect(`https://songcom-production.up.railway.app/Protected`);
   } catch (err) {
     console.error("GoogleCallback Error:", err);
     return res.status(500).json({
