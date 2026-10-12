@@ -21,7 +21,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin:"https://songcom-production.up.railway.app",
     credentials:true    
 }))
 
@@ -53,7 +53,7 @@ app.use(passport.initialize())
 passport.use(new GoogleStrategy({
     clientID:config.GOOGLE_CLIENT_ID2,
     clientSecret:config.GOOGLE_CLIENT_SECRET2,
-    callbackURL:"/api/web/google/callback"
+    callbackURL:"https://songcom-production.up.railway.app/api/web/google/callback"
 },(_,__,profile,done)=>{
     return done(null,profile)
 }))

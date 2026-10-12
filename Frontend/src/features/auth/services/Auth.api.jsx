@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://songcom-production.up.railway.app",
   withCredentials: true,
 });
 
