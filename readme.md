@@ -1,0 +1,2 @@
+password
+rizwan@12345=$2b$10$11PRyi41Zv9iKZ1XGof3FeBl6IW9LcVU0vgYCJUCGgJrIzbvwjD42

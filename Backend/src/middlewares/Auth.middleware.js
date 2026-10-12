@@ -1,9 +1,8 @@
-const jwt=require("jsonwebtoken")
-const Blacklistmodel = require("../models/Blacklist.models")
-const redis = require("../config/cashe")
+import jwt from "jsonwebtoken"
+import BlackListModel from "../models/Blacklist.models.js"
 
 
-const Identifire=async(req,res,next)=>{
+export const Identifire=async(req,res,next)=>{
     const token=req.cookies.token
 
     if(!token){
@@ -11,7 +10,7 @@ const Identifire=async(req,res,next)=>{
             message:"token is not provided"
         })
     }
-    const blacklist=await Blacklistmodel.findOne({
+    const blacklist=await BlackListModel.findOne({
    token: token
     })
    if(blacklist){
@@ -21,7 +20,7 @@ const Identifire=async(req,res,next)=>{
    }
      try{
         const incrypted=jwt.verify(token,process.env.JWT_SECRET)
-
+      console.log(req.user,"Identifire");
         req.user=incrypted
         next()
      }
@@ -35,4 +34,4 @@ const Identifire=async(req,res,next)=>{
     
 }
 
-module.exports=Identifire
+

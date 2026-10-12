@@ -1,6 +1,6 @@
-const mongoose=require("mongoose")
+import mongoose from "mongoose"
 
-const Blacklistschema=new mongoose.Schema({
+const BlacklistSchema=new mongoose.Schema({
     token:{
         type:String,
         createdAt: { type: Date, default: Date.now, expires: 3600 },
@@ -12,5 +12,5 @@ const Blacklistschema=new mongoose.Schema({
 }
 )
 
-const Blacklistmodel=mongoose.model("blacklist",Blacklistschema)
-module.exports =Blacklistmodel
+const BlackListModel=mongoose.model("blacklist",BlacklistSchema)
+export default BlackListModel

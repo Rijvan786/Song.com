@@ -1,7 +1,8 @@
-const mongoose=require("mongoose")
+import mongoose from "mongoose"
+import { config } from "./config.js";
 
 async function  ConnectDb(){
-     await mongoose.connect(process.env.MONGO_URI)
+     await mongoose.connect(config.MONGODB_URI)
      .catch((err)=>{
           console.log("MongoDB err",err);
      })
@@ -10,4 +11,4 @@ async function  ConnectDb(){
 
 }
 
-module.exports=ConnectDb
+export default ConnectDb

@@ -1,10 +1,9 @@
-const {Router}=require("express")
+import  {Router} from "express"
 
 const Songrouter=Router()
 
-const SongController=require("../controller/Song.controller")
-const upload = require("../middlewares/upload.middleware")
-
+import  {upload} from  "../middlewares/upload.middleware.js"
+import { getSong, uploadSongController } from "../controller/Song.controller.js"
 
 /**
  * Upload song
@@ -12,13 +11,13 @@ const upload = require("../middlewares/upload.middleware")
  */
 
 
-Songrouter.post("/",upload.single("song"),SongController.uploadSongController)
+Songrouter.post("/",upload.single("song"),uploadSongController)
 
 
 // Songrouter.get
 /**
  * /api/song?mood=currentmood
  */
-Songrouter.get("/",SongController.getSong)
+Songrouter.get("/",getSong)
 
-module.exports={Songrouter}
+export default  Songrouter 

@@ -1,22 +1,24 @@
 // const jwt=require("jsonwebtoken")
-const songmodel = require("../models/Song.model")
-const storage=require("../services/storage.services")
-const id3=require("node-id3")
+import songmodel   from "../models/Song.model.js"
+import id3 from "node-id3"
+import { uploadfile } from "../services/storage.services.js";
+uploadfile
 
 
-const uploadSongController=async(req,res)=>{
+
+export const uploadSongController=async(req,res)=>{
     const {mood}=req.body;
     const songbuffer=req.file.buffer
     const tags= id3.read(req.file.buffer)
-    console.log(tags);
+    console.log(tags,"lo");
   
     const [songfile, posterfile] = await Promise.all([
-        storage.uploadfile({
+        uploadfile({
             buffer: songbuffer,
             filename: tags.title + ".mp3",
             folder: "/moodify/songs"
         }),
-        storage.uploadfile({
+        uploadfile({
             buffer: tags.image.imageBuffer,
             filename: tags.title + ".jpeg",
             folder: "/moodify/posters"
@@ -35,17 +37,15 @@ res.status(201).json({
 })
 }
 
-const getSong=async (req,res)=>{
+export const getSong=async (req,res)=>{
     const {mood}=req.query
 
     const song=await songmodel.findOne({
         mood
     })
+    console.log(song);
     res.status(200).json({
         message:"Song fetched by mood successfully",
        song
     })
 }
-
-
- module.exports =  {uploadSongController,getSong}
