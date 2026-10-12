@@ -15,7 +15,7 @@ export default function GoogleButton({ text = "Continue with Google", onClick })
     } else {
       showToast("Redirecting to Google Sign-In...", "info");
       // Environment variable or fallback endpoint for Google OAuth redirect
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || "https://cerebrowar-production.up.railway.app";
       window.location.href = `${backendUrl}/api/web/google`;
     }
   };
