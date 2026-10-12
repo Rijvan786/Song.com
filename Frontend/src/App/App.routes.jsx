@@ -34,55 +34,27 @@ export const routes = createBrowserRouter([
     ),
     errorElement: <ErrorBoundPage />,
   },
-  {
-    path: "/profile",
-    element: (
-      <Protected>
-        <Profile />
-      </Protected>
-    ),
-    errorElement: <ErrorBoundPage />,
-  },
-  {
-    path: "/Register",
-    element: <Register />,
-    errorElement: <ErrorBoundPage />,
-  },
+
+ 
   {
     path: "/register",
     element: <Register />,
     errorElement: <ErrorBoundPage />,
   },
-  {
-    path: "/Login",
-    element: <Login />,
-    errorElement: <ErrorBoundPage />,
-  },
+ 
   {
     path: "/login",
     element: <Login />,
     errorElement: <ErrorBoundPage />,
   },
-  {
-    path: "/Forgetmail",
-    element: <Forgetmail />,
-    errorElement: <ErrorBoundPage />,
-  },
+
   {
     path: "/forgetmail",
     element: <Forgetmail />,
     errorElement: <ErrorBoundPage />,
   },
-  {
-    path: "/ForgetPassword",
-    element: <ForgetPassword />,
-    errorElement: <ErrorBoundPage />,
-  },
-  {
-    path: "/Forgetpassword",
-    element: <ForgetPassword />,
-    errorElement: <ErrorBoundPage />,
-  },
+
+
   {
     path: "/forgetpassword",
     element: <ForgetPassword />,
@@ -93,11 +65,7 @@ export const routes = createBrowserRouter([
     element: <Resend_Verifymail />,
     errorElement: <ErrorBoundPage />,
   },
-  {
-    path: "/Resend_Verifymail",
-    element: <Resend_Verifymail />,
-    errorElement: <ErrorBoundPage />,
-  },
+
   {
     path: "/resend_verifymail",
     element: <Resend_Verifymail />,

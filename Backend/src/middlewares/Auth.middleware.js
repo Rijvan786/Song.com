@@ -20,9 +20,11 @@ export const Identifire=async(req,res,next)=>{
    }
      try{
         const incrypted=jwt.verify(token,process.env.JWT_SECRET)
-      console.log(req.user,"Identifire");
+   
         req.user=incrypted
+        
         next()
+     console.log(req.user);
      }
      catch(err){
            return res.status(401).json({

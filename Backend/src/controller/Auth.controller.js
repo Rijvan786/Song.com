@@ -707,8 +707,7 @@ export const GoogleCallback = async (req, res) => {
         subject: "Welcome to Moodify — You're Ready to Stream! 🎧",
         text: `Welcome to Moodify, ${user.username}! Your Google account is connected. Start streaming now at ${clientUrl}`,
         html: emailHtml,
-      });k
-    
+      });    
     } catch (mailError) {
       console.error("Failed to send Google welcome email:", mailError);
     }

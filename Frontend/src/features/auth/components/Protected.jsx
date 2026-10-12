@@ -14,7 +14,8 @@ const Protected = ({ children }) => {
   // Wait for initial session validation before making redirection decision
 useEffect(()=>{
 
-   handlegetme()
+ async function fetch (){
+    handlegetme()
 
     if (Loading) {
     return (
@@ -27,6 +28,8 @@ useEffect(()=>{
   if (!user) {
     return <Navigate to="/Login" replace />
   }
+ }
+ fetch()
 },[])
 
   return children
