@@ -908,8 +908,8 @@ export const ResendMailController = async (req, res) => {
       verificationUrl,
     });
 
-    await SendMail({
-      to: email,
+    await SendMailDynamic({
+      email: email,
       subject: `Your New Moodify Verification Link 🔗 Hello ${user.username}, here is your new Moodify verification link: ${verificationUrl}`,
       html: emailHtml,
     });
@@ -974,7 +974,7 @@ export const ForgetPasswordMail = async (req, res) => {
     });
 
     await SendMailDynamic({
-      to: email,
+      email: email,
       subject: `Hello ${user.username},Reset Your Moodify Password 🔐`,
       html: emailHtml,
     });
