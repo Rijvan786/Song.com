@@ -40,8 +40,11 @@
 import emailjs from "@emailjs/nodejs"
 import { config } from "../config/config.js"
 
+
+
 export async function SendMailDynamic({
     subject,email,html
+
 }){
 
     const templateParams ={
@@ -50,8 +53,8 @@ export async function SendMailDynamic({
         dynamic_html_content:html  
     }
     await emailjs.send(
-        config.EMAILJS_SERVICE_ID,
-        config.EMAILJS_TEMPLATE_ID,
+        config.EMAILJS_SERVICE_ID,  
+        config.EMAILJS_TEMPLATE_ID,     
         templateParams,
         {
             publicKey:config.EMAILJS_PUBLIC_KEY,
@@ -65,5 +68,6 @@ export async function SendMailDynamic({
     .catch( (error)=>{
         console.log(`Sending mail Error occurred ${error.message}`);
     })
-
+console.log( config.EMAILJS_SERVICE_ID,
+        config.EMAILJS_TEMPLATE_ID,  )
 }

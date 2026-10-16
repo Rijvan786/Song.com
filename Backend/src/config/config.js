@@ -1,5 +1,6 @@
 import dotenv from "dotenv"
-dotenv.config();
+
+dotenv.config()
 
 
 
@@ -7,6 +8,7 @@ dotenv.config();
 const {MONGODB_URI, PORT,NODE_ENV,CLIENT_URL, JWT_SECRET, EMAIL_USER, EMAIL_PASS,EMAILJS_SERVICE_ID,
     EMAILJS_TEMPLATE_ID,EMAILJS_PUBLIC_KEY,EMAILJS_PRIVATE_KEY,IMAGE_KIT_PRIVATE_KEY,GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET,GOOGLE_REFRESH_TOKEN,GOOGLE_CLIENT_ID2,GOOGLE_CLIENT_SECRET2} = process.env;
 
+console.log(EMAILJS_SERVICE_ID,EMAILJS_TEMPLATE_ID)
 if(!MONGODB_URI) {
     throw new Error("MONGODB_URI is not defined in the environment variables");
 }
@@ -33,7 +35,7 @@ if(!EMAIL_PASS) {
     throw new Error("EMAIL_PASS is not defined in the environment variables");
 } 
 if(!EMAILJS_SERVICE_ID) {
-    throw new Error("EMAILJS_SERVICE_ID, is not defined in the environment variables");
+    throw new Error("EMAILJS_SERVICE_ID is not defined in the environment variables");
 } 
 
 if(!EMAILJS_TEMPLATE_ID) {
@@ -71,7 +73,7 @@ if(!GOOGLE_CLIENT_SECRET2){
 }
 
 
-export const  config ={
+export const  config = {
     MONGODB_URI:MONGODB_URI,
     PORT:PORT,
     EMAILJS_SERVICE_ID:EMAILJS_SERVICE_ID,
