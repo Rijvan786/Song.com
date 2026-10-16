@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken"
 import BlackListModel from "../models/Blacklist.models.js"
+import { config } from "dotenv"
 
 
 export const Identifire=async(req,res,next)=>{
@@ -19,7 +20,7 @@ export const Identifire=async(req,res,next)=>{
     })
    }
      try{
-        const incrypted=jwt.verify(token,process.env.JWT_SECRET)
+        const incrypted=jwt.verify(token,config.JWT_SECRET)
    
         req.user=incrypted
         
@@ -27,8 +28,8 @@ export const Identifire=async(req,res,next)=>{
      console.log(req.user);
      }
      catch(err){
-           return res.status(401).json({
-            message:"User is unauthorized"
+           return res.status(500).json({
+            message:`internal Server Error ${err.message}`
            })
      }
 

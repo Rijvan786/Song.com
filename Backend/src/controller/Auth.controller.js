@@ -3,7 +3,7 @@ import Authmodel from "../models/Auth.model.js";
 import bcrypt from "bcryptjs";
 import BlackListModel from "../models/Blacklist.models.js";
 import { config } from "../config/config.js";
-import { SendMail } from "../services/email.service.js";
+import {  SendMailDynamic } from "../services/email.service.js";
 
 // Helper: Escape HTML to prevent injection when rendering dynamic user input in emails
 function escapeHtml(str) {
@@ -610,10 +610,10 @@ export const RegisterController = async (req, res) => {
     });
 
     if (isAllReadyRegister) {
-      const conflictField =
-        isAllReadyRegister.email === email ? "Email is already registered" : "Username is already taken";
+
       return res.status(409).json({
-        message: conflictField,
+        message: isAllReadyRegister.email === email ? "Email is already registered" : "Username is already taken"
+
       });
     }
 
@@ -648,13 +648,15 @@ export const RegisterController = async (req, res) => {
 
     // Send high-deliverability welcome email
     try {
-      await SendMail({
-        to: email,
-        subject: "Welcome to Moodify — Verify Your Account 🎵",
-        text: `Welcome to Moodify, ${user.username}! Please verify your email address by visiting: ${verificationUrl}`,
+      await SendMailDynamic({
+        email: email,
+        subject: `Welcome to Moodify $— Verify Your Account 🎵 ${user.username}`,
         html: emailHtml,
       });
-    } catch (mailError) {
+      
+
+   
+     } catch (mailError) {
       console.error("Failed to send welcome email:", mailError);
       // Non-blocking mail failure: user is registered, can resend verification later
     }
@@ -702,10 +704,9 @@ export const GoogleCallback = async (req, res) => {
     });
 
     try {
-      await SendMail({
-        to: email,
-        subject: "Welcome to Moodify — You're Ready to Stream! 🎧",
-        text: `Welcome to Moodify, ${user.username}! Your Google account is connected. Start streaming now at ${clientUrl}`,
+      await SendMailDynamic({
+        email: email,
+        subject: `Welcome to Moodify,You're Ready to Stream! 🎧 ${user.username}! Your Google account is connected. Start streaming now at ${clientUrl}`,
         html: emailHtml,
       });    
     } catch (mailError) {
@@ -754,12 +755,14 @@ export const EmailVerificationController = async (req, res) => {
         message: "No verification token was provided in the request.",
         actionText: "Go to Moodify",
         actionUrl: clientUrl,
-      });
+      });  
       return res.status(400).send(html);
     }
 
     const decoded = jwt.verify(token, config.JWT_SECRET);
-    const user = await Authmodel.findOne({ email: decoded.email });
+    
+    const user = await Authmodel.findById(req.user.id );
+    console.log(user);
 
     if (!user) {
       const html = getVerificationLandingPage({
@@ -907,8 +910,7 @@ export const ResendMailController = async (req, res) => {
 
     await SendMail({
       to: email,
-      subject: "Your New Moodify Verification Link 🔗",
-      text: `Hello ${user.username}, here is your new Moodify verification link: ${verificationUrl}`,
+      subject: `Your New Moodify Verification Link 🔗 Hello ${user.username}, here is your new Moodify verification link: ${verificationUrl}`,
       html: emailHtml,
     });
 
@@ -971,10 +973,9 @@ export const ForgetPasswordMail = async (req, res) => {
       resetUrl,
     });
 
-    await SendMail({
+    await SendMailDynamic({
       to: email,
-      subject: "Reset Your Moodify Password 🔐",
-      text: `Hello ${user.username}, you requested a password reset for Moodify. Use this link to set a new password: ${resetUrl}`,
+      subject: `Hello ${user.username},Reset Your Moodify Password 🔐`,
       html: emailHtml,
     });
 

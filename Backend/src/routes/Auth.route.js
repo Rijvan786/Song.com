@@ -45,7 +45,7 @@ AuthRouter.get("/google/callback",
  * /api/web/Email-verify
  */
 
-AuthRouter.get("/Email-Verification",EmailVerificationController)
+AuthRouter.get("/Email-Verification",Identifire,EmailVerificationController)
 
 
 

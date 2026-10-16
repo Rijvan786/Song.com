@@ -3,7 +3,9 @@ dotenv.config();
 
 
 
-const {MONGODB_URI, PORT,NODE_ENV,CLIENT_URL, JWT_SECRET, EMAIL_USER, EMAIL_PASS,IMAGE_KIT_PRIVATE_KEY,GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET,GOOGLE_REFRESH_TOKEN,GOOGLE_CLIENT_ID2,GOOGLE_CLIENT_SECRET2} = process.env;
+
+const {MONGODB_URI, PORT,NODE_ENV,CLIENT_URL, JWT_SECRET, EMAIL_USER, EMAIL_PASS,EMAILJS_SERVICE_ID,
+    EMAILJS_TEMPLATE_ID,EMAILJS_PUBLIC_KEY,EMAILJS_PRIVATE_KEY,IMAGE_KIT_PRIVATE_KEY,GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET,GOOGLE_REFRESH_TOKEN,GOOGLE_CLIENT_ID2,GOOGLE_CLIENT_SECRET2} = process.env;
 
 if(!MONGODB_URI) {
     throw new Error("MONGODB_URI is not defined in the environment variables");
@@ -30,7 +32,19 @@ if(!EMAIL_USER) {
 if(!EMAIL_PASS) {
     throw new Error("EMAIL_PASS is not defined in the environment variables");
 } 
+if(!EMAILJS_SERVICE_ID) {
+    throw new Error("EMAILJS_SERVICE_ID, is not defined in the environment variables");
+} 
 
+if(!EMAILJS_TEMPLATE_ID) {
+    throw new Error("EMAILJS_TEMPLATE_ID is not defined in the environment variables");
+} 
+if(!EMAILJS_PUBLIC_KEY) {
+    throw new Error("EMAILJS_PUBLIC_KEY is not defined in the environment variables");
+} 
+if(!EMAILJS_PRIVATE_KEY) {
+    throw new Error("EMAILJS_PRIVATE_KEY is not defined in the environment variables");
+} 
 if(!IMAGE_KIT_PRIVATE_KEY) {
     throw new Error("IMAGEKIT_PRIVATE_KEY is not defined in the environment variables");
 }
@@ -60,6 +74,10 @@ if(!GOOGLE_CLIENT_SECRET2){
 export const  config ={
     MONGODB_URI:MONGODB_URI,
     PORT:PORT,
+    EMAILJS_SERVICE_ID:EMAILJS_SERVICE_ID,
+    EMAILJS_TEMPLATE_ID:EMAILJS_TEMPLATE_ID,
+    EMAILJS_PUBLIC_KEY:EMAILJS_PUBLIC_KEY,
+    EMAILJS_PRIVATE_KEY:EMAILJS_PRIVATE_KEY,
     NODE_ENV:NODE_ENV,
     CLIENT_URL:CLIENT_URL,
     JWT_SECRET:JWT_SECRET,

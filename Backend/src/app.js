@@ -21,7 +21,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.use(cors({
-    origin:"https://songcom-production.up.railway.app",
+    origin:"http://localhost:3000",
     credentials:true    
 }))
 
