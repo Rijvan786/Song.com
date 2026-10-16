@@ -20,10 +20,17 @@ export const Identifire=async(req,res,next)=>{
     })
    }
      try{
-        const incrypted=jwt.verify(token,config.JWT_SECRET)
+        const encrypted=jwt.verify(token,config.JWT_SECRET)
    
-        req.user=incrypted
-        
+        const user =await userModel.findById(encrypted.id)
+               
+               if(!user){
+                  return res.status(400).json({
+                     message:"User is Unauthorized"
+                  })
+                
+               }   
+         req.user=user
         next()
      console.log(req.user);
      }

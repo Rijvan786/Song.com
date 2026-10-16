@@ -681,10 +681,10 @@ export const GoogleCallback = async (req, res) => {
     const email = emails[0].value;
     const photo = photos?.[0]?.value || null;
 
-    let user = await Authmodel.findOne({ email });
-    const isNewUser = !user;
+    let user = await Authmodel.findOne({ email:email });
+ 
 
-    if (isNewUser) {
+    if (!user) {
       user = await Authmodel.create({
         googleId: id,
         username: displayName,
@@ -726,7 +726,7 @@ export const GoogleCallback = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: config.NODE_ENV === "production",
+      secure: true,
       sameSite: "lax",
     });
        
@@ -1096,7 +1096,7 @@ export const LoginController = async (req, res) => {
  */
 export const getMeController = async (req, res) => {
   try {
-    const user = await Authmodel.findById(req.user.id);
+    const user = req.user
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
