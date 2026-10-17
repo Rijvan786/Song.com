@@ -704,11 +704,11 @@ export const GoogleCallback = async (req, res) => {
     });
 
     try {
-      await SendMailDynamic({
-        email: email,
-        subject: `Welcome to Moodify,You're Ready to Stream! 🎧 ${user.username}! Your Google account is connected. Start streaming now at ${clientUrl}`,
-        html: emailHtml,
-      });    
+      // await SendMailDynamic({
+      //   email: email,
+      //   subject: `Welcome to Moodify,You're Ready to Stream! 🎧 ${user.username}! Your Google account is connected. Start streaming now at ${clientUrl}`,
+      //   html: emailHtml,
+      // });    
     } catch (mailError) {
       console.error("Failed to send Google welcome email:", mailError);
     }
