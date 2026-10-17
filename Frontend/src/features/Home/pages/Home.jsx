@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 import '../style/HomeHeader.scss'
 
-const Home = () => {
+const   Home = () => {
       const { handleLogout} = useAuth()
 
 

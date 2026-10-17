@@ -19,16 +19,16 @@ function escapeHtml(str) {
 // Base URLs resolution for scaling and multi-environment deployment
 const getClientUrl = () => {
   return (
-    config.CLIENT_URL ||
-    (config.NODE_ENV === "production" ? "https://songcom-production.up.railway.app" : "http://localhost:5173")
+
+    (config.NODE_ENV === "production" ? "https://songcom-production.up.railway.app" || config.CLIENT_URL : "http://localhost:5173")
   );
 };
 
 const getBaseUrl = () => {
   return (
-    process.env.BASE_URL ||
+  
     (config.NODE_ENV === "production"
-      ? "https://songcom-production.up.railway.app"
+      ? "https://songcom-production.up.railway.app" || config.CLIENT_URL
       : `http://localhost:${config.PORT || 3000}`)
   );
 };
@@ -677,6 +677,7 @@ export const RegisterController = async (req, res) => {
  */
 export const GoogleCallback = async (req, res) => {
   try {
+    console.log(req.user);
     const { id, displayName, emails, photos } = req.user;
     const email = emails[0].value;
     const photo = photos?.[0]?.value || null;
@@ -698,15 +699,15 @@ export const GoogleCallback = async (req, res) => {
 
     // Render modern HTML Google welcome email
     const emailHtml = getGoogleWelcomeEmailHtml({
-      username: user.username,
+      username: displayName,
       email: user.email,
-      dashboardUrl:`https://songcom-production.up.railway.app/protected`,
+      dashboardUrl:`https://songcom-production.up.railway.app`,
     });
 
     try {
       await SendMailDynamic({
         email: email,
-        subject: `Welcome to Moodify,You're Ready to Stream! 🎧 ${user.username}! Your Google account is connected. Start streaming now at ${clientUrl}`,
+        subject: `Welcome to Moodify,You're Ready to Stream! 🎧 ${displayName}! Your Google account is connected. Start streaming now at ${clientUrl}`,
         html: emailHtml,
       });    
     } catch (mailError) {
@@ -729,7 +730,6 @@ export const GoogleCallback = async (req, res) => {
       secure: true,
       sameSite: "lax",
     });
-       
     return   res.redirect(`https://songcom-production.up.railway.app/Protected`);
   } catch (err) {
     console.error("GoogleCallback Error:", err);
@@ -761,7 +761,9 @@ export const EmailVerificationController = async (req, res) => {
 
     const decoded = jwt.verify(token, config.JWT_SECRET);
     
-    const user = await Authmodel.findById(req.user.id );
+    const user = await Authmodel.findOne({
+      email:decoded.email
+    });
     console.log(user);
 
     if (!user) {
@@ -1059,9 +1061,9 @@ export const LoginController = async (req, res) => {
 
     const user = await Authmodel.findOne(
       {
-      $or: [{username }, { email }],
-    }).select("+password");
-     
+      $or: [{email:email }, {username:username}],
+    }).select("+password")
+    //  console.log(password,user.password)
     if (!user) {
       return res.status(400).json({
         message: "User not found",
@@ -1096,7 +1098,9 @@ export const LoginController = async (req, res) => {
  */
 export const getMeController = async (req, res) => {
   try {
-    const user = req.user
+    const userid = req.user.id
+    const user=await Authmodel.findOne({_id:userid})
+
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }

@@ -8,7 +8,7 @@ import '../style/Profile.scss'
 const Profile = () => {
   const Loading  = useSelector((state) => state.auth.Loading)
   const user = useSelector((state)=>state.auth.user)
-  console.log(user)
+  console.log(user) 
   const { handleLogout } = useAuth()
   const { showToast } = useToast()
   const navigate = useNavigate()

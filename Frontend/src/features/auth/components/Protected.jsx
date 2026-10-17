@@ -7,6 +7,7 @@ import { useAuth } from '../hook/useAuth'
 const Protected = ({ children }) => {
   const  Loading  = useSelector((state) => state.auth.Loading)
   const user  = useSelector((state)=>state.auth.user)
+  console.log(user)
   const  {handlegetme} =useAuth()
 
     

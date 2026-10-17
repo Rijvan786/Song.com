@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken"
 import BlackListModel from "../models/Blacklist.models.js"
-import { config } from "dotenv"
+import { config } from "../config/config.js"
 
 
 export const Identifire=async(req,res,next)=>{
@@ -21,18 +21,12 @@ export const Identifire=async(req,res,next)=>{
    }
      try{
         const encrypted=jwt.verify(token,config.JWT_SECRET)
-   
-        const user =await userModel.findById(encrypted.id)
-               
-               if(!user){
-                  return res.status(400).json({
-                     message:"User is Unauthorized"
-                  })
-                
-               }   
-         req.user=user
+      
+        req.user=encrypted
+        console.log(req.user);
+        
         next()
-     console.log(req.user);
+      
      }
      catch(err){
            return res.status(500).json({

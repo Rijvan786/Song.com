@@ -25,6 +25,7 @@ export const login = async ({ username, email, password }) => {
 
 export const getme = async () => {
   const response = await api.get("/api/web/getme");
+  console.log(response);
   return response.data;
 };
 
