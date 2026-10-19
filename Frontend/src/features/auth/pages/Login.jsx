@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux'
 const Login = () => {
   const [email, setemail] = useState('')
   const [password, setpassword] = useState('')
+  const   [showPassword, setShowPassword] = useState(false)
   const { handleLogin } = useAuth()
   const Loading = useSelector((state) => state.auth.Loading)
 
@@ -70,20 +71,32 @@ const Login = () => {
             required
           />
 
-          <Formcommon
-            type="password"
-            label="Password"
-            value={password}
-            setvalue={setpassword}
-            placeholder="Enter your password"
-            id="password"
-            required
-            headerAction={
-              <Link to="/Forgetmail" className="form-forgot-link">
-                Forgot password?
-              </Link>
-            }
-          />
+          <div className="password-field">
+            <Formcommon
+              label="Password"
+              value={password}
+              setvalue={setpassword}
+              placeholder="Enter your password"
+              id="password"
+              required
+              type={showPassword ? 'text' : 'password'}
+              headerAction={
+                <Link to="/Forgetmail" className="form-forgot-link">
+                  Forgot password?
+                </Link>
+              }
+            />
+            <button
+              type="button"
+              className="auth-toggle-btn"
+              onClick={() => setShowPassword(v => !v)}
+              aria-label={showPassword ? 'Hide password' : 'Show password'}
+              aria-pressed={showPassword}
+            >
+              {showPassword ?"Hide": 'SHOW'}
+              
+            </button>
+          </div>
 
           <button className="button" type="submit" disabled={Loading}>
             {Loading ? (

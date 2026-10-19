@@ -20,7 +20,7 @@ function escapeHtml(str) {
 const getClientUrl = () => {
   return (
 
-    (config.NODE_ENV === "production" ? "https://songcom-production.up.railway.app" || config.CLIENT_URL : "http://localhost:5173")
+    (config.NODE_ENV === "production" ? "https://songcom-production.up.railway.app" : "http://localhost:5173")
   );
 };
 
@@ -28,7 +28,7 @@ const getBaseUrl = () => {
   return (
   
     (config.NODE_ENV === "production"
-      ? "https://songcom-production.up.railway.app" || config.CLIENT_URL
+      ? "https://songcom-production.up.railway.app" 
       : `http://localhost:${config.PORT || 3000}`)
   );
 };
@@ -701,7 +701,7 @@ export const GoogleCallback = async (req, res) => {
     const emailHtml = getGoogleWelcomeEmailHtml({
       username: displayName,
       email: user.email,
-      dashboardUrl:`https://songcom-production.up.railway.app`,
+      dashboardUrl:`https://songcom-production.up.railway.app/Protected`,
     });
 
     try {
@@ -730,7 +730,7 @@ export const GoogleCallback = async (req, res) => {
       secure: true,
       sameSite: "lax",
     });
-    return   res.redirect(`https://songcom-production.up.railway.app/Protected`);
+     res.redirect(`https://songcom-production.up.railway.app/Protected`);
   } catch (err) {
     console.error("GoogleCallback Error:", err);
     return res.status(500).json({

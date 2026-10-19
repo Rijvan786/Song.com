@@ -11,6 +11,7 @@ import {useSelector} from "react-redux"
 function Register() {
   
   const [username, setusername] = useState('')
+  const  [showPassword, setShowPassword] = useState(false)
   const [email, setemail] = useState('')
   const [password, setpassword] = useState('')
   const { handleRegister} = useAuth()
@@ -81,15 +82,28 @@ console.log(Loading);
             id="email"
             required
           />
-          <Formcommon
-            type="password"
-            label="Password"
-            value={password}
-            setvalue={setpassword}
-            placeholder="Enter your password"
-            id="password"
-            required
-          />
+          <div className="password-field">
+            <Formcommon
+              label="Password"
+              value={password}
+              setvalue={setpassword}
+              placeholder="Enter your password"
+              id="password"
+              required
+              type={showPassword ? 'text' : 'password'}
+            />
+            <button
+              type="button"
+              className="auth-toggle-btn"
+              onClick={() => setShowPassword(v => !v)}
+              aria-label={showPassword ? 'Hide password' : 'Show password'}
+              aria-pressed={showPassword}
+            >
+              {showPassword ? 'HIDE' : 'SHOW'}
+            </button>
+          </div>
+
+
 
           <button className="button" type="submit" disabled={Loading}>
             {Loading ? (

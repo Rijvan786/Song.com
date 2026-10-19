@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { useAuth } from '../../auth/hook/useAuth'
 import { useToast } from '../../shared/context/ToastContext'
 import "../style/MyHome.scss"
+import musicLogo from '../../../assets/Music.jpg'
 
 const MyHome = () => {
   const navigate = useNavigate()
@@ -25,7 +26,7 @@ const MyHome = () => {
       {/* Top Navigation Bar with Profile Icon */}
       <header className="myhome-top-nav">
         <div className="myhome-brand" onClick={() => navigate('/')}>
-          <span className="brand-icon">🎵</span>
+          <span className="brand-icon"><img src={musicLogo} alt="Song.com" /></span>
           <span className="brand-title-text">
             Song<span className="brand-accent-text">.com</span>
           </span>
@@ -149,12 +150,7 @@ const MyHome = () => {
         <p className="footer-text">Join thousands of music lovers today • Lossless 24-bit HiFi Streaming</p>
       </div>
 
-      {/* Floating Background Elements */}
-      <div className="floating-bg">
-        <div className="float-1"></div>
-        <div className="float-2"></div>
-        <div className="float-3"></div>
-      </div>
+          
     </div>
   )
 }

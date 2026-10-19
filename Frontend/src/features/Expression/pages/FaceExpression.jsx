@@ -63,7 +63,7 @@ export default function FaceExpression({ onClick = () => {} }) {
 
   return (
     <div className="Faceexpression">
-      <h2>User Expression</h2>
+      <h2 >User Expression</h2>
 
       <div className="video-container">
         <video ref={videoRef} autoPlay playsInline />

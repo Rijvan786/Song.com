@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router'
 import { useAuth } from '../hook/useAuth'
 import { useToast } from '../../shared/context/ToastContext'
 import '../style/Profile.scss'
+import musicLogo from '../../../assets/Music.jpg'
 
 const Profile = () => {
   const Loading  = useSelector((state) => state.auth.Loading)
@@ -30,7 +31,7 @@ const Profile = () => {
       <div className="profile-page-wrapper">
         <header className="profile-nav-header">
           <div className="nav-brand" onClick={() => navigate('/')}>
-            <span className="brand-icon">🎵</span>
+            <span className="brand-icon"><img src={musicLogo} alt="Song.com" /></span>
             <span className="brand-name">
               Song<span className="brand-accent">.com</span>
             </span>
@@ -52,7 +53,7 @@ const Profile = () => {
       {/* Top Navigation */}
       <header className="profile-nav-header">
         <div className="nav-brand" onClick={() => navigate('/')} title="Song.com Home">
-          <span className="brand-icon">🎵</span>
+          <span className="brand-icon"><img src={musicLogo} alt="Song.com" /></span>
           <span className="brand-name">
             Song<span className="brand-accent">.com</span>
           </span>

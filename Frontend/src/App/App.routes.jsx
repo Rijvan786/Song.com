@@ -28,9 +28,9 @@ export const routes = createBrowserRouter([
   {
     path: "/Profile",
     element: (
-      <Protected>
+      // <Protected>
         <Profile />
-      </Protected>
+      // </Protected> 
     ),
     errorElement: <ErrorBoundPage />,
   },

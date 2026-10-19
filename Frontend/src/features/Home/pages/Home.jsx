@@ -8,6 +8,7 @@ import { useToast } from '../../shared/context/ToastContext'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 import '../style/HomeHeader.scss'
+import musicLogo from '../../../assets/Music.jpg'
 
 const   Home = () => {
       const { handleLogout} = useAuth()
@@ -45,7 +46,7 @@ const   Home = () => {
       {/* Modern Top Navigation Bar */}
       <header className="home-top-nav">
         <div className="nav-brand" onClick={() => navigate('/')} title="Song.com Home">
-          <div className="brand-logo-icon">🎵</div>
+          <div className="brand-logo-icon"><img src={musicLogo} alt="Song.com" /></div>
           <span className="brand-name">
             Song<span className="brand-accent">.com</span>
           </span>

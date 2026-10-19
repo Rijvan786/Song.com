@@ -10,6 +10,12 @@
         position: relative;
         display: inline-block;
     }
+    h2{
+        color: white;
+    }
+    h3{
+        color:white;
+    }
 
     video {
         width: 417px;
@@ -21,7 +27,7 @@
     .button {
         height: 3rem;
         width: 26.1rem;
-        text-decoration: none;
+        text-decoration: none;  
         border: none;
         margin-bottom: 4px;
         border-radius: 8px;
@@ -32,6 +38,11 @@
 
     .button:active {
         transform: scale(0.95);
+        background-color: #00ffaa;
+    }
+    .button:hover{
+        background-color: #00ffaa;
+        color: rgb(0, 0, 0);
     }
 }
 
@@ -54,7 +65,7 @@
 
 .face-popup-card {
     background: #1e293b;
-    color: #f8fafc;
+    color: #00ffaa;
     width: 90%;
     max-width: 420px;
     padding: 28px 24px;
@@ -71,14 +82,14 @@
     right: 16px;
     background: transparent;
     border: none;
-    color: #94a3b8;
+    color:  #00ffaa;
     font-size: 24px;
     line-height: 1;
     cursor: pointer;
     transition: color 0.15s ease;
 
     &:hover {
-        color: #ffffff;
+        color: #00ffaa;
     }
 }
 

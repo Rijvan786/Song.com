@@ -1,14 +1,161 @@
 .home-container {
-  max-height: 100%;
-  width: 185%;
-  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #2a3a52 100%);
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+  padding: 0 0 2.4rem 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+}
+.home-container .myhome-top-nav {
+  width: 100%;
+  height: 72px;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(10, 14, 39, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+.home-container .myhome-top-nav .myhome-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.home-container .myhome-top-nav .myhome-brand .brand-icon {
+  font-size: 1.6rem;
+}
+.home-container .myhome-top-nav .myhome-brand .brand-icon img {
+  display: block;
+  width: 32px;
+  height: 32px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+.home-container .myhome-top-nav .myhome-brand .brand-title-text {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #00ffaa;
+  letter-spacing: -0.02em;
+}
+.home-container .myhome-top-nav .myhome-brand .brand-title-text .brand-accent-text {
+  color: #00ffaa;
+}
+.home-container .myhome-top-nav .myhome-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.home-container .myhome-top-nav .myhome-nav-actions .myhome-profile-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px 5px 6px;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 9999px;
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.home-container .myhome-top-nav .myhome-nav-actions .myhome-profile-pill:hover {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: rgba(0, 212, 255, 0.5);
+  box-shadow: 0 4px 16px rgba(0, 212, 255, 0.25);
+  transform: translateY(-1px);
+}
+.home-container .myhome-top-nav .myhome-nav-actions .myhome-profile-pill.guest {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+.home-container .myhome-top-nav .myhome-nav-actions .myhome-profile-pill.guest:hover {
+  box-shadow: #00ffaa;
+}
+.home-container .myhome-top-nav .myhome-nav-actions .myhome-profile-pill .profile-avatar-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00d4ff 0%, #00ffaa 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   overflow: hidden;
-  padding: 2.4rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+}
+.home-container .myhome-top-nav .myhome-nav-actions .myhome-profile-pill .profile-avatar-circle img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.home-container .myhome-top-nav .myhome-nav-actions .myhome-profile-pill .profile-avatar-circle span {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #0a0e27;
+}
+.home-container .myhome-top-nav .myhome-nav-actions .myhome-profile-pill .profile-avatar-circle svg {
+  stroke: #ffffff;
+}
+.home-container .myhome-top-nav .myhome-nav-actions .myhome-profile-pill .profile-name-text {
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.home-container .myhome-top-nav .myhome-nav-actions .myhome-nav-btn {
+  padding: 8px 18px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+.home-container .myhome-top-nav .myhome-nav-actions .myhome-nav-btn.myhome-player-btn {
+  background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+  color: #0a0e27;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.home-container .myhome-top-nav .myhome-nav-actions .myhome-nav-btn.myhome-player-btn:hover {
+  box-shadow: 0 4px 16px rgba(15, 161, 180, 0.4);
+  transform: translateY(-1px);
+}
+.home-container .myhome-top-nav .myhome-nav-actions .myhome-nav-btn.myhome-logout-btn {
+  background: rgba(244, 63, 94, 0.1);
+  border-color: rgba(244, 63, 94, 0.3);
+  color: #fca5a5;
+}
+.home-container .myhome-top-nav .myhome-nav-actions .myhome-nav-btn.myhome-logout-btn:hover {
+  background: rgba(244, 63, 94, 0.2);
+  color: #ffffff;
+}
+.home-container .myhome-top-nav .myhome-nav-actions .myhome-nav-btn.myhome-login-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+.home-container .myhome-top-nav .myhome-nav-actions .myhome-nav-btn.myhome-login-btn:hover {
+  background: #00ffaa;
+  box-shadow: #97a7aa;
 }
 .home-container::before {
   content: "";
@@ -17,7 +164,6 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.05) 0%, transparent 70%);
   animation: moveGradient 15s ease-in-out infinite;
 }
 @keyframes moveGradient {
