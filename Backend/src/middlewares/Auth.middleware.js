@@ -23,7 +23,7 @@ export const Identifire=async(req,res,next)=>{
         const encrypted=jwt.verify(token,config.JWT_SECRET)
       
         req.user=encrypted
-        console.log(req.user);
+       
         
         next()
       

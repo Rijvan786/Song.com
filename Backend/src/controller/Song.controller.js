@@ -10,7 +10,7 @@ export const uploadSongController=async(req,res)=>{
     const {mood}=req.body;
     const songbuffer=req.file.buffer
     const tags= id3.read(req.file.buffer)
-    console.log(tags,"lo");
+
   
     const [songfile, posterfile] = await Promise.all([
         uploadfile({
@@ -43,7 +43,7 @@ export const getSong=async (req,res)=>{
     const song=await songmodel.findOne({
         mood
     })
-    console.log(song);
+
     res.status(200).json({
         message:"Song fetched by mood successfully",
        song

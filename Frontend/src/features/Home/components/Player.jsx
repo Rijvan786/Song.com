@@ -6,7 +6,7 @@ const Player = () => {
   const audioRef = useRef(null)
   
   const {song}=useSelector(state=>state.Song)
-  console.log(song);
+
   const {Loading}=useSelector(state=>state.auth)
   
 

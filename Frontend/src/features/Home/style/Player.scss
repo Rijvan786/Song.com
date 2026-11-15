@@ -13,15 +13,16 @@ $accent-hover: rgba(0, 212, 255, 0.2);
 
 .player {
     width: 100%;
-    max-width: 922px;
+    max-width: 760px;
     background: linear-gradient(135deg, $bg-primary 0%, $bg-secondary 100%);
-    border-radius: 20px;
-    padding: 2rem;
-    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 212, 255, 0.1);
+    border-radius: 16px;
+    padding: 1rem 1.4rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45), 0 0 35px rgba(0, 212, 255, 0.08);
     color: $text-primary;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
-    margin: 2rem auto;
+    margin: 0.75rem auto 1rem auto;
     transition: box-shadow 0.3s ease;
+    box-sizing: border-box;
 
     &:hover {
         box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6), 0 0 50px rgba(0, 212, 255, 0.15);
@@ -33,24 +34,24 @@ $accent-hover: rgba(0, 212, 255, 0.2);
 
     &__info {
         display: flex;
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 0.85rem;
+        align-items: center;
     }
 
     &__poster {
-        width: 70px;
-        height: 70px;
+        width: 52px;
+        height: 52px;
         object-fit: cover;
-        border-radius: 12px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
         border: 2px solid $border-color;
         flex-shrink: 0;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
         &:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(0, 212, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(0, 212, 255, 0.3);
             border-color: $primary-color;
         }
     }
@@ -60,26 +61,29 @@ $accent-hover: rgba(0, 212, 255, 0.2);
         display: flex;
         flex-direction: column;
         justify-content: center;
+        min-width: 0;
     }
 
     &__title {
-        font-size: 1.3rem;
+        font-size: 1.05rem;
         font-weight: 700;
         color: $text-primary;
-        margin: 0 0 0.8rem 0;
-        line-height: 1.4;
-        word-break: break-word;
-        letter-spacing: 0.3px;
+        margin: 0 0 0.3rem 0;
+        line-height: 1.3;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        letter-spacing: 0.2px;
     }
 
     &__mood {
         display: inline-block;
-        font-size: 0.85rem;
-        font-weight: 600;
+        font-size: 0.7rem;
+        font-weight: 700;
         color: $primary-color;
         background: rgba(0, 212, 255, 0.15);
-        padding: 0.4rem 0.8rem;
-        border-radius: 20px;
+        padding: 0.2rem 0.6rem;
+        border-radius: 9999px;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         border: 1px solid rgba(0, 212, 255, 0.3);
@@ -93,39 +97,39 @@ $accent-hover: rgba(0, 212, 255, 0.2);
     &__progress-wrap {
         display: flex;
         align-items: center;
-        gap: 0.8rem;
-        margin-bottom: 2rem;
-        padding: 0.5rem 0;
+        gap: 0.75rem;
+        margin-bottom: 0.85rem;
+        padding: 0;
     }
 
     &__time {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         font-weight: 500;
         color: $text-secondary;
-        min-width: 40px;
+        min-width: 36px;
         text-align: center;
         font-family: 'Courier New', monospace;
     }
 
     &__progress {
         flex: 1;
-        height: 8px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 4px;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 9999px;
         cursor: pointer;
         position: relative;
         overflow: hidden;
         transition: height 0.2s ease;
 
         &:hover {
-            height: 10px;
+            height: 8px;
         }
     }
 
     &__progress-fill {
         height: 100%;
         background: linear-gradient(90deg, $primary-color 0%, $primary-dark 100%);
-        border-radius: 4px;
+        border-radius: 9999px;
         transition: width 0.1s linear;
         box-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
     }
@@ -134,19 +138,19 @@ $accent-hover: rgba(0, 212, 255, 0.2);
         position: absolute;
         top: 50%;
         transform: translate(-50%, -50%);
-        width: 14px;
-        height: 14px;
+        width: 12px;
+        height: 12px;
         background: $text-primary;
         border-radius: 50%;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
         cursor: grab;
         transition: all 0.2s ease;
 
         &:active {
             cursor: grabbing;
-            width: 18px;
-            height: 18px;
-            box-shadow: 0 6px 16px rgba(0, 212, 255, 0.6);
+            width: 14px;
+            height: 14px;
+            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.6);
         }
     }
 
@@ -158,9 +162,9 @@ $accent-hover: rgba(0, 212, 255, 0.2);
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 1rem;
+        gap: 0.75rem;
         flex-wrap: wrap;
-        margin-bottom: 1.5rem;
+        margin-bottom: 0;
     }
 
     &__btn {
@@ -174,11 +178,11 @@ $accent-hover: rgba(0, 212, 255, 0.2);
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 0.4rem;
+        gap: 0.35rem;
 
         &:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.5);
+            box-shadow: 0 6px 16px rgba(0, 212, 255, 0.5);
         }
 
         &:active:not(:disabled) {
@@ -192,29 +196,29 @@ $accent-hover: rgba(0, 212, 255, 0.2);
         }
 
         svg {
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
         }
 
         &--play {
-            width: 60px;
-            height: 60px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             order: 3;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             background: linear-gradient(135deg, #00ffaa 0%, $primary-dark 100%);
-            box-shadow: 0 6px 20px rgba(0, 255, 170, 0.4);
+            box-shadow: 0 4px 16px rgba(0, 255, 170, 0.4);
 
             &:hover:not(:disabled) {
-                box-shadow: 0 10px 30px rgba(0, 255, 170, 0.6);
+                box-shadow: 0 8px 24px rgba(0, 255, 170, 0.6);
             }
         }
 
         &--skip {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 10px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
 
             &:first-of-type {
                 order: 2;
@@ -227,18 +231,18 @@ $accent-hover: rgba(0, 212, 255, 0.2);
 
         &--speed {
             order: 1;
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 10px;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 700;
             position: relative;
         }
 
         &--vol {
             order: 5;
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 10px;
         }
     }
@@ -378,40 +382,100 @@ $accent-hover: rgba(0, 212, 255, 0.2);
     // RESPONSIVE DESIGN
     // ============================================
 
-    @media (max-width: 600px) {
-        max-width: 90%;
-        padding: 1.5rem;
+    @media (max-width: 768px) {
+        width: 100%;
+        max-width: 100%;
+        padding: 1.25rem;
+        margin: 1.5rem auto;
+
+        &__info {
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
 
         &__poster {
-            width: 110px;
-            height: 110px;
+            width: 60px;
+            height: 60px;
         }
 
         &__title {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
+        }
+
+        &__controls {
+            gap: 0.75rem;
+            justify-content: center;
+        }
+
+        &__volume {
+            width: 100%;
+            justify-content: center;
+            margin-top: 0.5rem;
+            order: 6;
+
+            &-slider {
+                width: 140px;
+            }
+        }
+    }
+
+    @media (max-width: 600px) {
+        width: 100%;
+        max-width: 100%;
+        padding: 1rem;
+        margin: 1rem auto;
+        border-radius: 16px;
+
+        &__info {
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        &__poster {
+            width: 52px;
+            height: 52px;
+            border-radius: 8px;
+        }
+
+        &__title {
+            font-size: 1rem;
+            margin: 0 0 0.4rem 0;
+        }
+
+        &__mood {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.6rem;
+        }
+
+        &__controls {
+            gap: 0.5rem;
         }
 
         &__btn {
             &--play {
-                width: 52px;
-                height: 52px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.1rem;
             }
 
             &--skip {
-                width: 45px;
-                height: 45px;
+                width: 42px;
+                height: 42px;
                 font-size: 0.7rem;
+                padding: 2px;
             }
 
             &--speed,
             &--vol {
-                width: 45px;
-                height: 45px;
+                width: 42px;
+                height: 42px;
+                font-size: 0.8rem;
             }
         }
 
         &__progress-wrap {
             gap: 0.6rem;
+            margin-bottom: 1.25rem;
         }
 
         &__time {
@@ -419,64 +483,65 @@ $accent-hover: rgba(0, 212, 255, 0.2);
             min-width: 35px;
         }
 
-        &__volume-slider {
-            width: 60px;
+        &__volume {
+            width: 100%;
+            justify-content: center;
+            margin-top: 0.5rem;
+
+            &-slider {
+                width: 120px;
+            }
         }
     }
 
     @media (max-width: 400px) {
-        padding: 1rem;
+        padding: 0.85rem;
 
         &__info {
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
         }
 
         &__poster {
-            width: 100px;
-            height: 100px;
-        }
-
-        &__meta {
-            align-items: center;
-            text-align: center;
+            width: 48px;
+            height: 48px;
         }
 
         &__title {
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         &__controls {
-            gap: 0.6rem;
+            gap: 0.4rem;
         }
 
         &__btn {
             &--play {
-                width: 48px;
-                height: 48px;
+                width: 46px;
+                height: 46px;
             }
 
             &--skip {
-                width: 40px;
-                height: 40px;
+                width: 38px;
+                height: 38px;
                 font-size: 0.65rem;
 
-                span {
+                span:last-child {
                     display: none;
                 }
             }
 
             &--speed,
             &--vol {
-                width: 40px;
-                height: 40px;
-                font-size: 0.8rem;
+                width: 38px;
+                height: 38px;
+                font-size: 0.75rem;
             }
         }
 
         &__progress-wrap {
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
 
         &__time {
@@ -485,7 +550,7 @@ $accent-hover: rgba(0, 212, 255, 0.2);
         }
 
         &__volume-slider {
-            width: 50px;
+            width: 100px;
         }
     }
 }
