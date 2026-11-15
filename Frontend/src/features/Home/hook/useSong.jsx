@@ -16,7 +16,7 @@ export const useSong = () => {
     
          }
          catch(err){
-               dispatch( setError(err.message))
+               dispatch(setError(err.message))
          }
          finally{
                 dispatch(setLoading(false))

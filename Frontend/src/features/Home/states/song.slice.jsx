@@ -6,8 +6,8 @@ const songSlice=createSlice({
      initialState:{
         song:{
        "title": "High On Me (Risky-jaTT.CoM)",
-        "url": "https://ik.imagekit.io/Rizwan786/moodify/songs/High_On_Me__RiskyjaTT.CoM__Qaug-HYIV.mp3",
-        "posturl": "https://ik.imagekit.io/Rizwan786/moodify/posters/High_On_Me__RiskyjaTT.CoM___n_-BeTcZ.jpeg",
+        "url": "https://ik.imagekit.io/Rizwan786/moodify/songs/6_Am__RiskyjaTT.CoM__qi-VaMXq8.mp3",
+        "posturl": "https://ik.imagekit.io/Rizwan786/moodify/posters/6_Am__RiskyjaTT.CoM__gDvKJ8izp.jpeg",
         "mood": "Neutral"},
        
        
