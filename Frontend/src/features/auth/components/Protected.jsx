@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Navigate } from 'react-router'
+import { Navigate, useNavigate } from 'react-router'
 import { PageSkeleton } from '../../shared/components/Skeleton'
 import { useSelector } from 'react-redux'
 import { useAuth } from '../hook/useAuth'
@@ -16,7 +16,7 @@ const Protected = ({ children }) => {
 useEffect(()=>{
 
  async function fetch (){
-    handlegetme()
+    await handlegetme()
 
     if (Loading) {
     return (
@@ -27,7 +27,7 @@ useEffect(()=>{
   }
 
   if (!user) {
-    return <Navigate to="/Login" replace />
+   <Navigate to="/login"  replace />
   }
  }
  fetch()

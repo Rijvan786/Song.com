@@ -28,6 +28,8 @@
             gap: 12px;
             cursor: pointer;
             user-select: none;
+            min-width: 0;
+            flex-shrink: 0;
 
             .brand-logo-icon {
                 font-size: 1.5rem;
@@ -72,6 +74,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            flex-shrink: 0;
 
             .nav-btn {
                 display: inline-flex;
@@ -160,7 +163,7 @@
     .home-main-content {
         flex: 1;
         width: 100%;
-        max-width: 1000px;
+        max-width: 900px;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
@@ -174,18 +177,18 @@
     .home-screen-wrapper {
         .home-top-nav {
             padding: 0 12px;
-            height: 58px;
+            height: 56px;
 
             .nav-brand {
                 gap: 8px;
 
                 .brand-logo-icon img {
-                    width: 28px;
-                    height: 28px;
+                    width: 26px;
+                    height: 26px;
                 }
 
                 .brand-name {
-                    font-size: 1.1rem;
+                    font-size: 1.15rem;
                 }
 
                 .hifi-badge {
@@ -194,19 +197,20 @@
             }
 
             .nav-actions {
-                gap: 6px;
+                gap: 8px;
 
                 .nav-btn {
-                    padding: 6px 8px;
+                    padding: 6px 10px;
                     font-size: 0.8rem;
                 }
 
                 .nav-profile-btn {
-                    padding: 3px 6px 3px 3px;
+                    padding: 3px 8px 3px 4px;
+                    gap: 6px;
 
                     .avatar-chip {
-                        width: 28px;
-                        height: 28px;
+                        width: 26px;
+                        height: 26px;
 
                         .avatar-text {
                             font-size: 0.75rem;
@@ -214,22 +218,63 @@
                     }
 
                     .nav-username {
-                        display: none;
+                        font-size: 0.8rem;
+                        max-width: 70px;
+                        display: inline-block;
                     }
                 }
 
                 .nav-logout-btn {
                     padding: 6px 10px;
+                    gap: 4px;
+
+                    svg {
+                        width: 16px;
+                        height: 16px;
+                    }
 
                     .logout-text {
-                        display: none;
+                        display: inline-block;
+                        font-size: 0.8rem;
                     }
                 }
             }
         }
 
         .home-main-content {
-            padding: 16px 8px;
+            padding: 12px 8px 24px 8px;
+        }
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .home-screen-wrapper {
+        .home-top-nav {
+            padding: 0 8px;
+            height: 54px;
+
+            .nav-brand {
+                .brand-name {
+                    font-size: 1.05rem;
+                }
+            }
+
+            .nav-actions {
+                gap: 6px;
+
+                .nav-profile-btn {
+                    .nav-username {
+                        max-width: 50px;
+                    }
+                }
+
+                .nav-logout-btn {
+                    padding: 6px 8px;
+                    .logout-text {
+                        display: none;
+                    }
+                }
+            }
         }
     }
 }

@@ -14,7 +14,7 @@ export const routes = createBrowserRouter([
   {
     path: "/",
     element: <MyHome />,
-    errorElement: <ErrorBoundPage />,
+    errorElement: <ErrorBoundPage />  ,
   },
   {
     path: "/Protected",

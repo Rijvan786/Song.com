@@ -1,20 +1,41 @@
-import React from 'react'
-import { useNavigate } from 'react-router'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { Navigate, useNavigate } from 'react-router'
+import { useDispatch, useSelector } from 'react-redux'
 import { useAuth } from '../../auth/hook/useAuth'
 import { useToast } from '../../shared/context/ToastContext'
 import "../style/MyHome.scss"
 import musicLogo from '../../../assets/Music.jpg'
-
+import { setUser } from '../../auth/states/auth.slice'
 const MyHome = () => {
   const navigate = useNavigate()
-  const { user } = useSelector((state) => state.auth)
-  const { handleLogout } = useAuth()
+  const user = useSelector(state => state.auth.user)
+  const { handleLogout, handlegetme } = useAuth()
   const { showToast } = useToast()
+  const [menuOpen, setMenuOpen] = useState(false)
+  
+
+  useEffect(()=>{
+
+ async function fetch (){
+    await handlegetme()
+
+
+
+  if (!user) {
+   <Navigate to="/login"  replace />
+  }
+ }
+ fetch()
+},[])
+
+  
+
+  
 
   const onLogout = async () => {
     try {
       await handleLogout()
+      setMenuOpen(false)
       showToast('Logged out successfully', 'info')
     } catch (err) {
       console.error('Logout error:', err)
@@ -66,6 +87,18 @@ const MyHome = () => {
               >
                 Sign Out
               </button>
+
+              {/* Hamburger Button (visible on mobile) */}
+              <button
+                className={`myhome-hamburger-btn ${menuOpen ? 'active' : ''}`}
+                onClick={() => setMenuOpen(!menuOpen)}
+                aria-label="Toggle Navigation Menu"
+                title="Menu"
+              >
+                <span className="hamburger-line"></span>
+                <span className="hamburger-line"></span>
+                <span className="hamburger-line"></span>
+              </button>
             </>
           ) : (
             <>
@@ -90,9 +123,76 @@ const MyHome = () => {
               >
                 Login
               </button>
+
+              {/* Hamburger Button for Guest (visible on mobile) */}
+              <button
+                className={`myhome-hamburger-btn ${menuOpen ? 'active' : ''}`}
+                onClick={() => setMenuOpen(!menuOpen)}
+                aria-label="Toggle Navigation Menu"
+                title="Menu"
+              >
+                <span className="hamburger-line"></span>
+                <span className="hamburger-line"></span>
+                <span className="hamburger-line"></span>
+              </button>
             </>
           )}
         </div>
+
+        {/* Mobile Dropdown Drawer */}
+        {menuOpen && (
+          <div className="myhome-mobile-menu">
+            {user ? (
+              <>
+                <button
+                  className="mobile-menu-item"
+                  onClick={() => {
+                    setMenuOpen(false)
+                    navigate('/Profile')
+                  }}
+                >
+                  <span className="menu-icon">👤</span> My Profile ({user.username || 'User'})
+                </button>
+                <button
+                  className="mobile-menu-item"
+                  onClick={() => {
+                    setMenuOpen(false)
+                    navigate('/Protected')
+                  }}
+                >
+                  <span className="menu-icon">🎧</span> Launch Player
+                </button>
+                <button
+                  className="mobile-menu-item logout"
+                  onClick={onLogout}
+                >
+                  <span className="menu-icon">🚪</span> Sign Out
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  className="mobile-menu-item"
+                  onClick={() => {
+                    setMenuOpen(false)
+                    navigate('/Login')
+                  }}
+                >
+                  <span className="menu-icon">🔓</span> Login
+                </button>
+                <button
+                  className="mobile-menu-item"
+                  onClick={() => {
+                    setMenuOpen(false)
+                    navigate('/Register')
+                  }}
+                >
+                  <span className="menu-icon">✨</span> Create Account
+                </button>
+              </>
+            )}
+          </div>
+        )}
       </header>
 
       <div className="home-content">
