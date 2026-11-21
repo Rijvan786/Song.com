@@ -31,7 +31,7 @@ AuthRouter.get("/google",passport.authenticate("google",{scope:["profile","email
 
 
 AuthRouter.get("/google/callback",
-  passport.authenticate("google",{session:false,failureRedirect:config.NODE_ENV==="production"?"https://song-com.onrender.com":"http://localhost:5173"})
+  passport.authenticate("google",{session:false,failureRedirect:"https://song-com.onrender.com"})
 ,GoogleCallback)
 
 

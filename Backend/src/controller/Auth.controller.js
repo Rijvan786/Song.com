@@ -18,19 +18,11 @@ function escapeHtml(str) {
 
 // Base URLs resolution for scaling and multi-environment deployment
 const getClientUrl = () => {
-  return (
-
-    (config.NODE_ENV === "production" ? "https://song-com.onrender.com" : "http://localhost:5173")
-  );
+  return "https://song-com.onrender.com";
 };
 
 const getBaseUrl = () => {
-  return (
-  
-    (config.NODE_ENV === "production"
-      ? "https://song-com.onrender.com" 
-      : `http://localhost:${config.PORT || 3000}`)
-  );
+  return "https://song-com.onrender.com";
 };
 
 /**
